@@ -1,0 +1,46 @@
+import java.awt.*;
+import java.io.File;
+import javax.imageio.*;
+import java.io.IOException;
+import java.awt.image.*;
+
+public class FastBullet {
+  
+  private double x, y;
+  private double vel = 4;
+  static BufferedImage fastBullet;
+
+  public FastBullet(int x, int y) { 
+    this.x = x;
+    this.y = y;
+    
+    try{
+      fastBullet = ImageIO.read(new File ("FastBullet.png"));
+    }
+    catch  (IOException e){
+      System.out.println("Unknown Image");
+    }
+    
+  }
+  
+  public void update(){
+    y -= vel;
+  }
+  
+  public double getY(){
+    return y;
+  }
+  
+  public double getX(){
+    return x;
+  }
+  
+  public double getVel(){
+    return vel;
+  }
+  
+  public void draw(Graphics g){
+    g.drawImage(fastBullet, (int)x, (int)y, 30, 60, null);
+  }
+  
+}
